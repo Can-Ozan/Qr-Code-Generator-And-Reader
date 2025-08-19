@@ -18,6 +18,11 @@ A modern, mobile-ready QR code generator and scanner application built with Reac
 - **Multiple Format Support**: Automatically detects URLs, text, contact cards, and more
 - **Smart Result Display**: Formatted display based on QR code content type
 
+## 🖼️ Project Screenshots
+
+### Main Interface
+![SwiftNote Studio Interface](/images/arayüz.png)
+
 ### 📱 Mobile Features
 - **Native Camera Access**: Uses Capacitor for native camera functionality
 - **Responsive Design**: Optimized for mobile and desktop devices
