@@ -1,17 +1,16 @@
-import React from 'react';
-import { Navigation } from '@/components/Navigation';
-import { Hero } from '@/components/Hero';
-import { FeaturedSection } from '@/components/FeaturedSection';
-import { ContentGrid } from '@/components/ContentGrid';
+import React, { useState } from 'react';
+import { AppNavigation } from '@/components/AppNavigation';
+import { QRGenerator } from '@/components/QRGenerator';
+import { QRScanner } from '@/components/QRScanner';
 
 const Index = () => {
+  const [activeTab, setActiveTab] = useState<'generator' | 'scanner'>('generator');
+
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      <main className="pt-16">
-        <Hero />
-        <FeaturedSection />
-        <ContentGrid />
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted/20">
+      <AppNavigation activeTab={activeTab} onTabChange={setActiveTab} />
+      <main className="container mx-auto px-4 py-8">
+        {activeTab === 'generator' ? <QRGenerator /> : <QRScanner />}
       </main>
     </div>
   );
