@@ -43,8 +43,8 @@ A modern, mobile-ready QR code generator and scanner application built with Reac
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd qr-scanner-app
+   git clone https://github.com/Can-Ozan/Qr-Code-Generator-And-Reader.git
+   cd Qr-Code-Generator-And-Reader
    ```
 
 2. **Install dependencies**
@@ -68,8 +68,8 @@ To run on mobile devices:
 
 2. **Clone your repository locally**
    ```bash
-   git clone <your-github-repo-url>
-   cd <project-name>
+   git clone https://github.com/Can-Ozan/Qr-Code-Generator-And-Reader.git
+   cd Qr-Code-Generator-And-Reader
    npm install
    ```
 
@@ -152,7 +152,7 @@ src/
 ### Capacitor Configuration
 The app is configured for mobile deployment with:
 - App ID: `app.lovable.b639fbb0672b41beb85348d802d757f7`
-- App Name: `reel-kitap-yuvam`
+- App Name: `Qr-Code-Generator-And-Reader`
 - Hot-reload enabled for development
 
 ### Camera Permissions
@@ -201,4 +201,4 @@ For support and questions:
 
 ---
 
-Built with ❤️ using [Lovable](https://lovable.dev)
+Built with ❤️ using Yusuf Can Ozan
