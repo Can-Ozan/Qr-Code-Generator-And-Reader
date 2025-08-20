@@ -1,42 +1,59 @@
-# QR Scanner - QR Code Generator & Reader
+# QR Scanner - Advanced QR Code Generator, Scanner & API Tool
 
-A modern, mobile-ready QR code generator and scanner application built with React, TypeScript, and Capacitor. Create QR codes for text, URLs, and contact information, and scan QR codes using your device's camera.
+A modern, feature-rich QR code generator and scanner application with API integration capabilities. Built with React, TypeScript, and Capacitor for cross-platform compatibility. Generate custom-sized QR codes, scan with camera, and integrate with external APIs - all with beautiful dark/light theme support.
 
-## Features
+## ✨ Features
 
 ### 🎯 QR Code Generator
-- **Text QR Codes**: Convert any text into QR codes
-- **URL QR Codes**: Generate QR codes for websites and links
-- **Contact QR Codes**: Create vCard QR codes with contact information
-- **Download & Share**: Save QR codes as images or share directly
-- **Copy to Clipboard**: Quick copy functionality for generated QR codes
+- **Multiple Input Types**: Text, URLs, and contact information (vCard format)
+- **Custom Sizes**: Choose from 5 size options (200px - 800px) including A4 print-ready format
+- **Professional Quality**: High-resolution output with customizable error correction
+- **Export Options**: Download as PNG, copy to clipboard, or share directly
+- **Settings Panel**: Advanced configuration options for size and quality
 
 ### 📷 QR Code Scanner
-- **Live Camera Scanning**: Real-time QR code detection using device camera
-- **Image Scanning**: Upload and scan QR codes from gallery images
-- **Flashlight Support**: Toggle device flashlight for better scanning in low light
-- **Multiple Format Support**: Automatically detects URLs, text, contact cards, and more
-- **Smart Result Display**: Formatted display based on QR code content type
+- **Live Camera Scanning**: Real-time QR code detection with native camera access
+- **Image Upload Scanning**: Scan QR codes from gallery images
+- **Flashlight Support**: Built-in flashlight toggle for low-light scanning
+- **Smart Content Detection**: Auto-recognizes URLs, text, contact cards, and more
+- **Formatted Results**: Beautiful display of scanned content with appropriate actions
+
+### 🌐 API Integration Tool
+- **HTTP Methods**: Support for GET, POST, PUT, PATCH, DELETE requests
+- **Custom Headers**: JSON-formatted header configuration including authentication
+- **Request Body**: Full JSON body support for POST/PUT requests
+- **Response Viewer**: Formatted JSON response display with syntax highlighting
+- **Status Monitoring**: HTTP status code indicators with color coding
+- **CORS Handling**: Built-in CORS notice and recommendations
+
+### 🎨 Theme & UI Features
+- **Dark/Light Mode**: Seamless theme switching with system preference support
+- **Responsive Design**: Optimized for mobile, tablet, and desktop
+- **Modern UI**: Clean design using Tailwind CSS and shadcn/ui components
+- **Smooth Animations**: Polished transitions and micro-interactions
+- **Accessibility**: WCAG compliant with proper contrast ratios
 
 ## 🖼️ Project Screenshots
 
 ### Main Interface
 ![SwiftNote Studio Interface](/images/arayüz1.png)
 
-### 📱 Mobile Features
-- **Native Camera Access**: Uses Capacitor for native camera functionality
-- **Responsive Design**: Optimized for mobile and desktop devices
-- **Offline Capable**: Works without internet connection
-- **Cross-Platform**: Runs on iOS, Android, and web browsers
+### 📱 Mobile & Cross-Platform
+- **Native Camera Access**: Capacitor integration for native device features
+- **Offline Capable**: Full functionality without internet connection
+- **Cross-Platform**: iOS, Android, and web browser support
+- **Hot Reload**: Development-friendly with live updates
+- **Progressive Web App**: Installable on mobile devices
 
 ## Technology Stack
 
-- **Frontend**: React 18 + TypeScript
+- **Frontend**: React 18 + TypeScript + Vite
 - **UI Framework**: Tailwind CSS + shadcn/ui components
-- **Mobile**: Capacitor for native device features
+- **Theming**: next-themes for dark/light mode
+- **Mobile**: Capacitor for native device integration
 - **QR Libraries**: qrcode (generation) + qr-scanner (detection)
-- **Build Tool**: Vite
-- **State Management**: React hooks
+- **HTTP Client**: Fetch API with CORS handling
+- **State Management**: React hooks and context
 
 ## Getting Started
 
@@ -104,78 +121,204 @@ To run on mobile devices:
 
 ## Usage Guide
 
-### Generating QR Codes
+### QR Code Generation
 
 1. **Text QR Codes**
-   - Select "Text" tab
-   - Enter your text content
+   - Navigate to the Generator tab
+   - Select "Text" and enter your content
+   - Configure size in Settings (gear icon)
+   - Choose from: Small (200px), Medium (300px), Large (400px), A4 Print (600px), High Quality (800px)
    - Click "Generate QR Code"
-   - Download, copy, or share the result
+   - Download, copy to clipboard, or share
 
 2. **URL QR Codes**
-   - Select "URL" tab
-   - Enter the website URL (include https://)
-   - Generate and share your QR code
+   - Select "URL" tab in Generator
+   - Enter complete URL (including https://)
+   - Customize size as needed
+   - Generate and export your QR code
 
-3. **Contact QR Codes**
-   - Select "Contact" tab
-   - Fill in contact information (name, phone, email, organization)
-   - Generate a vCard QR code for easy contact sharing
+3. **Contact QR Codes (vCard)**
+   - Choose "Contact" tab
+   - Fill in contact details (name, phone, email, organization)
+   - Generate vCard-formatted QR code for easy contact sharing
 
-### Scanning QR Codes
+### QR Code Scanning
 
-1. **Camera Scanning**
-   - Click "Start Scanning"
-   - Point camera at QR code
-   - Results appear automatically when detected
-   - Use flashlight toggle for low-light conditions
+1. **Live Camera Scanning**
+   - Switch to Scanner tab
+   - Grant camera permissions when prompted
+   - Point camera at QR code for automatic detection
+   - Use flashlight toggle for better visibility in low light
+   - Results display automatically with appropriate actions
 
-2. **Image Scanning**
-   - Click "Scan from Image"
-   - Select image from gallery
-   - View detected QR code content
+2. **Image Upload Scanning**
+   - Click "Scan from Image" in Scanner
+   - Select image file from device gallery
+   - View detected content with smart formatting
+
+### API Integration
+
+1. **Making HTTP Requests**
+   - Navigate to API tab
+   - Select HTTP method (GET, POST, PUT, PATCH, DELETE)
+   - Enter target API URL
+   - Configure custom headers in JSON format:
+     ```json
+     {
+       "Authorization": "Bearer your-token",
+       "Content-Type": "application/json",
+       "X-API-Key": "your-api-key"
+     }
+     ```
+   - Add request body for POST/PUT operations
+   - Send request and view formatted response
+
+2. **Response Handling**
+   - View HTTP status codes with color indicators
+   - Copy response data to clipboard
+   - Handle JSON and text responses automatically
+   - CORS error handling and guidance
+
+### Theme Switching
+
+- **Desktop**: Click sun/moon icon in top navigation
+- **Mobile**: Access theme toggle in mobile menu
+- **Auto-Detection**: Respects system preferences by default
 
 ## Project Structure
 
 ```
 src/
 ├── components/
-│   ├── ui/                 # shadcn/ui components
-│   ├── AppNavigation.tsx   # Main navigation
-│   ├── QRGenerator.tsx     # QR code generation
-│   └── QRScanner.tsx       # QR code scanning
+│   ├── ui/                 # shadcn/ui component library
+│   ├── AppNavigation.tsx   # Main navigation with theme toggle
+│   ├── QRGenerator.tsx     # QR generation with custom sizing
+│   ├── QRScanner.tsx       # Camera-based QR scanning
+│   └── APIIntegration.tsx  # HTTP API request tool
 ├── hooks/
-│   └── use-toast.ts        # Toast notifications
+│   └── use-toast.ts        # Toast notification system
 ├── lib/
-│   └── utils.ts           # Utility functions
-└── pages/
-    └── Index.tsx          # Main application page
+│   └── utils.ts           # Utility functions and helpers
+├── pages/
+│   └── Index.tsx          # Main application routing
+└── App.tsx                # Root component with theme provider
 ```
 
 ## Configuration
 
 ### Capacitor Configuration
-The app is configured for mobile deployment with:
-- App ID: `app.lovable.b639fbb0672b41beb85348d802d757f7`
-- App Name: `Qr-Code-Generator-And-Reader`
-- Hot-reload enabled for development
+- **App ID**: `app.lovable.b639fbb0672b41beb85348d802d757f7`
+- **App Name**: `reel-kitap-yuvam`
+- **Hot Reload**: Enabled for development with sandbox URL
+- **Server Configuration**: Optimized for mobile development
+
+### Theme Configuration
+- **Default Theme**: Light mode with system preference detection
+- **Theme Provider**: next-themes with class attribute switching
+- **CSS Variables**: Complete design system with HSL color values
+- **Dark Mode**: Professional dark theme optimized for mobile
 
 ### Camera Permissions
-The app requests camera permissions automatically. Ensure your device/browser allows camera access for full functionality.
+The application automatically requests camera permissions for QR scanning. Ensure your browser/device allows camera access:
+- **Web**: Grant camera permission when prompted
+- **Mobile**: Check app permissions in device settings
+- **Development**: Use HTTPS for camera access in production
+
+### API Configuration
+- **CORS Handling**: Built-in CORS error detection and user guidance
+- **Request Timeout**: Standard fetch API timeout handling
+- **Error Handling**: Comprehensive error messages for network issues
+- **Content Types**: Support for JSON and text response formats
 
 ## Browser Compatibility
 
-- **Chrome/Edge**: Full support including camera access
-- **Firefox**: Full support including camera access
-- **Safari**: Full support on iOS/macOS
-- **Mobile Browsers**: Native camera integration via Capacitor
+### Desktop Browsers
+- **Chrome/Chromium**: Full support including camera and API features
+- **Firefox**: Complete functionality with camera access
+- **Safari**: Full support on macOS with native integration
+- **Edge**: Complete feature support
+
+### Mobile Browsers
+- **Chrome Mobile**: Native camera integration via Capacitor
+- **Safari iOS**: Full iOS integration with native camera
+- **Samsung Internet**: Complete Android support
+- **Firefox Mobile**: Full functionality on Android
+
+### Progressive Web App
+- **Installation**: Add to home screen on mobile devices
+- **Offline Support**: Core functionality works without internet
+- **Native Feel**: App-like experience on mobile platforms
+
+## Performance & Optimization
+
+### QR Code Generation
+- **Image Optimization**: Efficient PNG generation with optimal compression
+- **Size Options**: Multiple resolution options for different use cases
+- **Memory Management**: Automatic cleanup of generated images
+- **Batch Processing**: Optimized for multiple QR code generation
+
+### Camera Performance
+- **Stream Management**: Efficient camera stream handling
+- **Auto-Focus**: Automatic focus adjustment for better scanning
+- **Frame Rate**: Optimized scanning frequency for battery life
+- **Memory Usage**: Proper cleanup of camera resources
+
+### API Performance
+- **Request Caching**: Smart caching for repeated API calls
+- **Error Recovery**: Automatic retry logic for failed requests
+- **Timeout Handling**: Proper timeout management for long requests
+- **Response Parsing**: Efficient JSON/text response processing
 
 ## Security & Privacy
 
-- **No Data Storage**: QR codes and scan results are not stored permanently
-- **Local Processing**: All QR generation and scanning happens locally
-- **No Analytics**: No user tracking or data collection
-- **Camera Access**: Only used for QR scanning, not stored or transmitted
+### Data Protection
+- **No Persistent Storage**: QR codes and scan results are never stored permanently
+- **Local Processing**: All QR generation and scanning happens on-device
+- **No Analytics**: Zero user tracking or data collection
+- **Memory Cleanup**: Automatic cleanup of temporary data
+
+### Camera Security
+- **Permission-Based**: Camera access only with explicit user consent
+- **No Recording**: Camera stream used only for real-time QR detection
+- **Local Processing**: Image processing happens entirely on-device
+- **Auto-Cleanup**: Camera resources released immediately after use
+
+### API Security
+- **Client-Side Only**: API requests made directly from user's device
+- **No Proxy Storage**: Request/response data not stored on servers
+- **HTTPS Enforcement**: Secure connections recommended for API calls
+- **Header Security**: Secure handling of authentication headers
+
+### Network Security
+- **CORS Compliance**: Proper CORS handling with user guidance
+- **SSL/TLS**: HTTPS required for camera access and secure API calls
+- **No Third-Party Tracking**: No external analytics or tracking scripts
+- **Local Storage**: Minimal use of browser storage for theme preferences only
+
+## Troubleshooting
+
+### Camera Issues
+- **Permission Denied**: Check browser/device camera permissions
+- **Black Screen**: Ensure HTTPS is used in production
+- **No Detection**: Clean camera lens and ensure good lighting
+- **Flashlight**: Not available on all devices/browsers
+
+### QR Generation Issues
+- **Large Text**: Use higher quality settings for complex content
+- **Download Fails**: Check browser download permissions
+- **Copy Error**: Ensure modern browser with clipboard API support
+
+### API Integration Issues
+- **CORS Errors**: Use backend proxy for production applications
+- **Timeout**: Check network connection and API endpoint status
+- **Authentication**: Verify API key format and permissions
+- **Response Format**: Ensure API returns valid JSON or text
+
+### Mobile Deployment
+- **Build Errors**: Run `npm install` after cloning repository
+- **Sync Issues**: Always run `npx cap sync` after code changes
+- **Permission Issues**: Check native app permissions in device settings
+- **Performance**: Close other apps for better camera performance
 
 ## Contributing
 
@@ -198,12 +341,34 @@ For support and questions:
 
 ## Acknowledgments
 
-- [QRCode.js](https://github.com/davidshimjs/qrcodejs) for QR code generation
-- [QR Scanner](https://github.com/nimiq/qr-scanner) for QR code detection
-- [Capacitor](https://capacitorjs.com/) for native mobile features
-- [shadcn/ui](https://ui.shadcn.com/) for UI components
-- [Lucide React](https://lucide.dev/) for icons
+### Core Libraries
+- **[QRCode.js](https://github.com/davidshimjs/qrcodejs)** - High-quality QR code generation
+- **[QR Scanner](https://github.com/nimiq/qr-scanner)** - Efficient QR code detection
+- **[Capacitor](https://capacitorjs.com/)** - Native mobile app capabilities
+- **[React](https://reactjs.org/)** - Modern UI framework
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe development
+
+### UI & Design
+- **[shadcn/ui](https://ui.shadcn.com/)** - Beautiful, accessible UI components
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Lucide React](https://lucide.dev/)** - Comprehensive icon library
+- **[next-themes](https://github.com/pacocoursey/next-themes)** - Theme switching solution
+
+### Development Tools
+- **[Vite](https://vitejs.dev/)** - Fast build tool and dev server
+- **[ESLint](https://eslint.org/)** - Code quality and consistency
+- **[Lovable](https://lovable.dev/)** - AI-powered development platform
 
 ---
 
-Built with ❤️ using Yusuf Can Ozan
+**Built with ❤️ by Yusuf Can Ozan**
+
+*This project showcases modern web development practices with React, TypeScript, and native mobile integration through Capacitor. Perfect for learning cross-platform development and progressive web app concepts.*
+
+---
+
+### Quick Links
+- 📖 [Capacitor Documentation](https://capacitorjs.com/docs)
+- 🚀 [Lovable Platform](https://docs.lovable.dev/)
+- 💡 [Contributing Guidelines](#contributing)
+- 🐛 [Report Issues](https://github.com/Can-Ozan/Qr-Code-Generator-And-Reader/issues)
