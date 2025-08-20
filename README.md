@@ -21,7 +21,7 @@ A modern, mobile-ready QR code generator and scanner application built with Reac
 ## 🖼️ Project Screenshots
 
 ### Main Interface
-![SwiftNote Studio Interface](/images/arayüz.png)
+![SwiftNote Studio Interface](/images/arayüz1.png)
 
 ### 📱 Mobile Features
 - **Native Camera Access**: Uses Capacitor for native camera functionality
