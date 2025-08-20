@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import QRCode from 'qrcode';
-import { Download, Copy, Share2, QrCode, LinkIcon, User, Mail, Phone } from 'lucide-react';
+import { Download, Copy, Share2, QrCode, LinkIcon, User, Mail, Phone, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 
 interface ContactInfo {
@@ -28,6 +29,8 @@ export const QRGenerator: React.FC = () => {
     organization: ''
   });
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
+  const [qrSize, setQrSize] = useState<number>(300);
+  const [showSettings, setShowSettings] = useState<boolean>(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { toast } = useToast();
 
@@ -37,7 +40,7 @@ export const QRGenerator: React.FC = () => {
     setIsGenerating(true);
     try {
       const dataUrl = await QRCode.toDataURL(data, {
-        width: 300,
+        width: qrSize,
         margin: 2,
         color: {
           dark: '#1e293b',
@@ -150,7 +153,35 @@ END:VCARD`;
         {/* Generator */}
         <Card>
           <CardHeader>
-            <CardTitle>Generate QR Code</CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle>Generate QR Code</CardTitle>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowSettings(!showSettings)}
+              >
+                <Settings className="w-4 h-4" />
+              </Button>
+            </div>
+            {showSettings && (
+              <div className="space-y-4 pt-4 border-t">
+                <div className="space-y-2">
+                  <Label>QR Code Size</Label>
+                  <Select value={qrSize.toString()} onValueChange={(value) => setQrSize(Number(value))}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select size" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="200">Small (200px)</SelectItem>
+                      <SelectItem value="300">Medium (300px)</SelectItem>
+                      <SelectItem value="400">Large (400px)</SelectItem>
+                      <SelectItem value="600">Print A4 (600px)</SelectItem>
+                      <SelectItem value="800">High Quality (800px)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            )}
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="text" className="space-y-4">

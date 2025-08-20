@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { QrCode, Camera, Menu, X } from 'lucide-react';
+import { QrCode, Camera, Menu, X, Sun, Moon, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { useTheme } from 'next-themes';
 
 interface AppNavigationProps {
-  activeTab: 'generator' | 'scanner';
-  onTabChange: (tab: 'generator' | 'scanner') => void;
+  activeTab: 'generator' | 'scanner' | 'api';
+  onTabChange: (tab: 'generator' | 'scanner' | 'api') => void;
 }
 
 export const AppNavigation: React.FC<AppNavigationProps> = ({ activeTab, onTabChange }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   return (
     <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border sticky top-0 z-50">
@@ -44,17 +46,42 @@ export const AppNavigation: React.FC<AppNavigationProps> = ({ activeTab, onTabCh
               <Camera className="w-4 h-4" />
               <span>Scanner</span>
             </Button>
+            <Button
+              variant={activeTab === 'api' ? 'default' : 'ghost'}
+              size="sm"
+              onClick={() => onTabChange('api')}
+              className="flex items-center space-x-2"
+            >
+              <Globe className="w-4 h-4" />
+              <span>API</span>
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="flex items-center space-x-2"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </Button>
+          {/* Mobile Menu Button & Theme Toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -84,6 +111,18 @@ export const AppNavigation: React.FC<AppNavigationProps> = ({ activeTab, onTabCh
               >
                 <Camera className="w-4 h-4" />
                 <span>QR Scanner</span>
+              </Button>
+              <Button
+                variant={activeTab === 'api' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => {
+                  onTabChange('api');
+                  setIsOpen(false);
+                }}
+                className="w-full justify-start flex items-center space-x-2"
+              >
+                <Globe className="w-4 h-4" />
+                <span>API Integration</span>
               </Button>
             </div>
           </div>
