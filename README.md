@@ -208,7 +208,7 @@ src/
 
 ### Capacitor Configuration
 - **App ID**: `app.lovable.b639fbb0672b41beb85348d802d757f7`
-- **App Name**: `reel-kitap-yuvam`
+- **App Name**: `QR Scanner - Advanced QR Code Generator, Scanner`
 - **Hot Reload**: Enabled for development with sandbox URL
 - **Server Configuration**: Optimized for mobile development
 
