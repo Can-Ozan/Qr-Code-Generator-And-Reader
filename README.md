@@ -36,7 +36,7 @@ A modern, feature-rich QR code generator and scanner application with API integr
 ## 🖼️ Project Screenshots
 
 ### Main Interface
-![SwiftNote Studio Interface](/images/arayüz1.png)
+![SwiftNote Studio Interface](/images/image.png)
 
 ### 📱 Mobile & Cross-Platform
 - **Native Camera Access**: Capacitor integration for native device features
