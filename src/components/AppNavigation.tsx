@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { QrCode, Camera, Menu, X, Sun, Moon, Globe } from 'lucide-react';
+import { QrCode, Camera, Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useTheme } from 'next-themes';
 
 interface AppNavigationProps {
-  activeTab: 'generator' | 'scanner' | 'api';
-  onTabChange: (tab: 'generator' | 'scanner' | 'api') => void;
+  activeTab: 'generator' | 'scanner';
+  onTabChange: (tab: 'generator' | 'scanner') => void;
 }
 
 export const AppNavigation: React.FC<AppNavigationProps> = ({ activeTab, onTabChange }) => {
@@ -45,15 +45,6 @@ export const AppNavigation: React.FC<AppNavigationProps> = ({ activeTab, onTabCh
             >
               <Camera className="w-4 h-4" />
               <span>Scanner</span>
-            </Button>
-            <Button
-              variant={activeTab === 'api' ? 'default' : 'ghost'}
-              size="sm"
-              onClick={() => onTabChange('api')}
-              className="flex items-center space-x-2"
-            >
-              <Globe className="w-4 h-4" />
-              <span>API</span>
             </Button>
             <Button
               variant="ghost"
@@ -111,18 +102,6 @@ export const AppNavigation: React.FC<AppNavigationProps> = ({ activeTab, onTabCh
               >
                 <Camera className="w-4 h-4" />
                 <span>QR Scanner</span>
-              </Button>
-              <Button
-                variant={activeTab === 'api' ? 'default' : 'ghost'}
-                size="sm"
-                onClick={() => {
-                  onTabChange('api');
-                  setIsOpen(false);
-                }}
-                className="w-full justify-start flex items-center space-x-2"
-              >
-                <Globe className="w-4 h-4" />
-                <span>API Integration</span>
               </Button>
             </div>
           </div>
